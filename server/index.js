@@ -11,15 +11,28 @@ dbConnection();
 
 app.use(express.json());
 app.use(cookieParser());
+
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://tasko-frontend-p3y7.onrender.com',
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
-}))
+}));
 
 app.use('/api/v1', taskRoutes);
 app.use('/api/v1/user',userRoutes);
 
-// app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
