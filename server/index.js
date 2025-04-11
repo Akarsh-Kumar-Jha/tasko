@@ -13,22 +13,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'https://tasko-frontend-p3y7.onrender.com',
-    ];
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: [
+    "http://localhost:5173",
+    "https://tasko-frontend-p3y7.onrender.com",
+    "https://tasko-frontendnew.onrender.com"
+  ],
   credentials: true,
 };
-
 app.use(cors(corsOptions));
 
 app.options('*', cors(corsOptions));
@@ -36,12 +27,6 @@ app.options('*', cors(corsOptions));
 
 app.use('/api/v1', taskRoutes);
 app.use('/api/v1/user',userRoutes);
-
-app.use(express.static(path.join(__dirname, "client/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/dist/index.html"));
-});
 
 app.listen(3000, () => {
   console.log("Server Started!");
