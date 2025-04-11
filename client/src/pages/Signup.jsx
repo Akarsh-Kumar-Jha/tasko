@@ -32,7 +32,7 @@ function Signup() {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/api/v1/user/register", {
+      const res = await axios.post("https://tasko-backendnew.onrender.com/api/v1/user/register", {
         name,
         email,
         password,
