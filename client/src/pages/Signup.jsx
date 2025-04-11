@@ -53,6 +53,9 @@ function Signup() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
+
+<Toaster richColors position="top-center" />
+      
       <Card className="w-full max-w-md p-6 shadow-xl rounded-2xl">
         <CardContent className="space-y-4 mt-2">
           <h2 className="text-3xl font-bold text-center mb-4">Signup</h2>
