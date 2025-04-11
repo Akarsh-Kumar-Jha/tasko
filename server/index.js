@@ -16,7 +16,8 @@ const corsOptions = {
   origin: [
     "http://localhost:5173",
     "https://tasko-frontend-p3y7.onrender.com",
-    "https://tasko-frontendnew.onrender.com"
+    "https://tasko-frontendnew.onrender.com",
+    "https://tasko-backendnew.onrender.com/api/v1/"
   ],
   credentials: true,
 };
