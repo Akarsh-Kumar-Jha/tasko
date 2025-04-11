@@ -25,8 +25,8 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
 
-app.use('/api/v1', taskRoutes);
-app.use('/api/v1/user',userRoutes);
+// app.use('/api/v1', taskRoutes);
+// app.use('/api/v1/user',userRoutes);
 
 app.listen(3000, () => {
   console.log("Server Started!");
