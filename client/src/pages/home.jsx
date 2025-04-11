@@ -40,7 +40,7 @@ const res = await axios.post(`https://tasko-backendnew.onrender.com/api/v1/add`,
   withCredentials: true
 });
 
-console.log(res.data);
+console.log("Response While Getting Tasks:- ",res.data);
 toast.success("🎉 Task Added Successfully!");
 setTitle('');
 setDescription('');
