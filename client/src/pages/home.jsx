@@ -33,10 +33,13 @@ function App() {
 
   const handleAdd = async() => {
 try{
-const res = await axios.post(`https://tasko-backendnew.onrender.com/api/v1/add`,{
+const res = await axios.post(`https://tasko-backendnew.onrender.com/api/v1/add`, {
   title,
   description
+}, {
+  withCredentials: true
 });
+
 console.log(res.data);
 toast.success("🎉 Task Added Successfully!");
 setTitle('');
@@ -50,7 +53,9 @@ await getTasks();
 
   const getTasks = async () => {
     try {
-      const Tasks = await axios.get(`https://tasko-backendnew.onrender.com/api/v1/`);
+     const Tasks = await axios.get(`https://tasko-backendnew.onrender.com/api/v1/`, {
+  withCredentials: true
+});
       console.log("Tasks: ",Tasks);
       setTodos(Tasks.data.tasks);
       setUserName(Tasks.data.Name)
@@ -69,7 +74,9 @@ await getTasks();
 
   const removeTask = async (id) => {
     try {
-      const removedTask = await axios.delete(`https://tasko-backendnew.onrender.com/api/v1/remove/:id`);
+      const removedTask = await axios.delete(`https://tasko-backendnew.onrender.com/api/v1/remove/${id}`, {
+  withCredentials: true
+});
       toast.success("🗑️ Task Removed Successfully!");
       console.log("Removed Task: ",removedTask);
       await getTasks();
