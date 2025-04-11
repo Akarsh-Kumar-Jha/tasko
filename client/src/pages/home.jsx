@@ -11,13 +11,14 @@ import {
   } from "../components/ui/dropdown-menu"
 
 import TodoList from "../TodoList"
+
+axios.defaults.withCredentials = true;
+
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { Toaster } from "sonner";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom"
-
-axios.defaults.withCredentials = true;
 
 
 
