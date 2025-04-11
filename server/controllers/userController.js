@@ -100,11 +100,12 @@ exports.login = async (req, res) => {
       expiresIn: "6h",
     });
 
-    return res
+   return res
       .cookie("token", token, {
         httpOnly: true,
         secure: true,
-        expires:new Date(Date.now() + 6 * 60 * 60 * 1000)
+        sameSite: "None",
+        expires: new Date(Date.now() + 6 * 60 * 60 * 1000),
       })
       .json({
         success: true,
